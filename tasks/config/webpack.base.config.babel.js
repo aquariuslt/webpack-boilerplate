@@ -53,13 +53,20 @@ let webpackBaseConfig = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: [
-        'main',
-        'styles'
-      ]
+      name: 'vendor',
+      minChunks: function (module) {
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&
+          module.resource.indexOf(
+            pathUtil.root('node_modules')
+          ) === 0
+        );
+      }
     }),
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: './src/index.html',
+      favicon: './src/favicon.png'
     })
   ]
 };

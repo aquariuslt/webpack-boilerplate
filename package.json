@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --config ./tasks/config/webpack.dev.config.babel.js",
-    "build": "rimraf dist && webpack --config ./tasks/config/webpack.prod.config.babel.js"
+    "build": "rimraf dist && webpack --config ./tasks/config/webpack.prod.config.babel.js --display-chunks"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.62",

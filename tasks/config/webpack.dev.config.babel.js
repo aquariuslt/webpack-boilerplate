@@ -1,10 +1,12 @@
 /* Created by Aquariuslt on 14/04/2017.*/
-
+import webpack from 'webpack';
 import merge from 'webpack-merge';
 import webpackBaseConfig from './webpack.base.config.babel';
-import * as pathUtil from '../util/path-util';
 
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin';
+
+import * as pathUtil from '../util/path-util';
 
 const PROTOCOL = 'http://';
 const HOST = 'localhost';
@@ -12,7 +14,7 @@ const PORT = 5000;
 
 
 let webpackDevConfig = merge(webpackBaseConfig, {
-  devtool: 'source-map',
+  devtool: 'cheap-module-eval-source-map',
   output: {
     path: pathUtil.root('build'),
     publicPath: PROTOCOL + HOST + ':' + PORT,
@@ -21,22 +23,30 @@ let webpackDevConfig = merge(webpackBaseConfig, {
     chunkFilename: '[id].chunk.js'
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"development"'
+      }
+    }),
     new ExtractTextPlugin({
-      filename: '[name].bundle.css'
-    })
+      filename: '[name].bundle.css',
+      disable: true
+    }),
+    new FriendlyErrorsPlugin()
   ],
   devServer: {
     port: PORT,
     historyApiFallback: true,
-    quiet: true,
+    quiet: false,
     noInfo: true,
     stats: {
       assets: false,
       colors: true,
       version: false,
       hash: false,
-      timings: false,
-      chunks: false,
+      children: false,
+      timings: true,
+      chunks: true,
       chunkModules: false
     }
   }
