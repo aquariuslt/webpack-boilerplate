@@ -1,0 +1,14 @@
+.layout-center-container {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.webpack-logo {
+  background: url("./assets/imgs/webpack-logo.png");
+  height: 200px;
+  width: 200px;
+}
