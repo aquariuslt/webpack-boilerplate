@@ -30,6 +30,7 @@ let webpackDevConfig = merge(webpackBaseConfig, {
     new FriendlyErrorsPlugin()
   ],
   devServer: {
+    host: devConfig.devServer.host,
     port: devConfig.devServer.port,
     historyApiFallback: true,
     quiet: false,

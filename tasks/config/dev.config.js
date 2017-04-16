@@ -20,6 +20,7 @@ let devConfig = merge(baseConfig, {
     publicPath: PROTOCOL + HOST + ':' + PORT
   },
   devServer: {
+    host: HOST,
     port: PORT
   }
 });

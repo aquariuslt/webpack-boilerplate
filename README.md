@@ -1,5 +1,9 @@
 # Webpack Boilerplate
 
+[![Build Status](https://travis-ci.org/aquariuslt/webpack-boilerplate.svg?branch=master)](https://github.com/aquariuslt/webpack-boilerplate)
+
+[![License](https://img.shields.io/github/license/aquariuslt/webpack-boilerplate.svg)](https://github.com/aquariuslt/webpack-boilerplate)
+
 一个基于[Angular Webpack Introduction](https://angular.io/docs/ts/latest/guide/webpack.html)
 和`@angular/cli`提供的 Webpack 构建思路的Webpack Boilerplate项目.
 
@@ -40,7 +44,10 @@
 
 ## 食用方法
 
-
+### 克隆项目
+```bash`
+git clone https://github.com/Aquariuslt/Webpack-Boilerplate.git && cd Webpack-Boilerplate
+```
 
 ### 安装依赖
 > P.S. 因为项目的依赖中包含了`node-sass`.在国内下载可能被墙而导致下载构建超慢.  
@@ -123,3 +130,5 @@ yarn run build
 
 
 
+## License
+MIT
