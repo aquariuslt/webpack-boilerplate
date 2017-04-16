@@ -1,8 +1,8 @@
 # Webpack Boilerplate
 
-[![Build Status](https://travis-ci.org/aquariuslt/webpack-boilerplate.svg?branch=master)](https://github.com/aquariuslt/webpack-boilerplate)
+[![Build Status](https://travis-ci.org/Aquariuslt/Webpack-Boilerplate.svg?branch=master)](https://github.com/Aquariuslt/Webpack-Boilerplate)
 
-[![License](https://img.shields.io/github/license/aquariuslt/webpack-boilerplate.svg)](https://github.com/aquariuslt/webpack-boilerplate)
+[![License](https://img.shields.io/github/license/Aquariuslt/Webpack-Boilerplate.svg)](https://github.com/aquariuslt/webpack-boilerplate)
 
 一个基于[Angular Webpack Introduction](https://angular.io/docs/ts/latest/guide/webpack.html)
 和`@angular/cli`提供的 Webpack 构建思路的Webpack Boilerplate项目.
@@ -30,10 +30,34 @@
 不过度封装配置导致学习成本较高的
 一个手骨架.
 
+### 目标
+1. 提供通用符合主流约定的前端构建项目模板
+2. 从浅到深演示演变过程,提供完全的说明
+3. 提供多个后续开发集成的样例
+
+
 ### 演变过程
 根据项目结构进化的过程,防止为了过度可配置化使得项目结构学习成本过高.根据演变过程设立了几个版本:
 
 1.`Pure-Webpack` 较为纯净的通过 `Webpack-cli`,`Webpack-dev-server` 命令 + 直接的配置文件运行的版本.
+![Pure Webpack Diagram Flow](https://ooo.0o0.ooo/2017/04/16/58f38b75c61b4.png)
+
+在此基本的结构下  
+本地开发纯前端客户端  
+可以通过`webpack-dev-server`指定开发环境配置,之后启动一个本地的可热替换纯前端单页应用服务器.
+譬如
+```bash
+webpack-dev-server --config ./tasks/config/webpack.dev.config.babel.js
+```
+打包成生产环境的静态资源文件时候  
+可以通过`webpack`指定生产环境配置,构建出对应的对应的静态资源文件.  
+譬如
+```bash
+webpack --config ./tasks/config/webpack.prod.config.babel.js 
+```
+
+> 当基本阅读过Webpack官网提供的一些样例的时候,这部分就相当容易理解了.  
+> 部分官方文档介绍详尽,易于理解的部分,在`深入理解`这一部分章节的最后会提供一些链接.
 
 2.`Gulp-Flow` 基于`Pure-Webpack`版本,稍微将一部分可配置化,且在常见的开发约定中希望易于用户配置的部分,抽取到更上一级的配置文件中,避免直接修改`webpack.config`.
 并且以`gulp`的任务流进行封装.
@@ -124,9 +148,12 @@ yarn run build
 
 
 
+## 与流行的一些服务端项目结构搭配 [TODO]
+### SpringBoot
 
+### Express
 
-
+### 通用的开发环境代理通讯
 
 
 
