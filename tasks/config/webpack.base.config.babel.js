@@ -3,7 +3,10 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+
 import * as pathUtil from '../util/path-util';
+
+import baseConfig from './base.config';
 
 let webpackBaseConfig = {
   entry: {
@@ -66,7 +69,7 @@ let webpackBaseConfig = {
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      favicon: './src/favicon.png'
+      favicon: './src/' + baseConfig.favicon
     })
   ]
 };

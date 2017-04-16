@@ -5,14 +5,15 @@ import merge from 'webpack-merge';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 import webpackBaseConfig from './webpack.base.config.babel';
-import * as pathUtil from '../util/path-util';
+import prodConfig from './prod.config';
 
 let webpackProdConfig = merge(webpackBaseConfig, {
   devtool: 'cheap-module-source-map',
   output: {
-    path: pathUtil.root('dist'),
+    path: prodConfig.output.path,
     filename: '[name].[chunkhash].js',
     chunkFilename: '[id].[chunkhash].js'
   },
@@ -45,7 +46,7 @@ let webpackProdConfig = merge(webpackBaseConfig, {
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      favicon: './src/favicon.png',
+      favicon: './src/' + prodConfig.favicon,
       inject: true,
       minify: {
         removeComments: true,
@@ -53,7 +54,8 @@ let webpackProdConfig = merge(webpackBaseConfig, {
         removeAttributeQuotes: false
       },
       chunksSortMode: 'dependency'
-    })
+    }),
+    new CopyWebpackPlugin(prodConfig.assets)
   ],
   stats: {
     colors: true,
