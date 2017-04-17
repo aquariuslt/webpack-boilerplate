@@ -46,7 +46,11 @@ let webpackDevConfig = merge(webpackBaseConfig, {
       timings: true,
       chunks: true,
       chunkModules: false
-    }
+    },
+    hot: true,
+    filename: '[name].bundle.js',
+    publicPath: devConfig.output.publicPath,
+    clientLogLevel: 'info'
   }
 });
 
