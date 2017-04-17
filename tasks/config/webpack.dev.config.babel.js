@@ -27,6 +27,8 @@ let webpackDevConfig = merge(webpackBaseConfig, {
       filename: '[name].bundle.css',
       disable: true
     }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new FriendlyErrorsPlugin()
   ],
   devServer: {
