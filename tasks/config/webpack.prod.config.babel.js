@@ -11,7 +11,7 @@ import webpackBaseConfig from './webpack.base.config.babel';
 import prodConfig from './prod.config';
 
 let webpackProdConfig = merge(webpackBaseConfig, {
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
   output: {
     path: prodConfig.output.path,
     filename: '[name].[chunkhash].js',

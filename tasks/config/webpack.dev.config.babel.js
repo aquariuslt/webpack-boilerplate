@@ -9,7 +9,7 @@ import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin';
 import devConfig from './dev.config';
 
 let webpackDevConfig = merge(webpackBaseConfig, {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   output: {
     path: devConfig.output.path,
     publicPath: devConfig.output.publicPath,
