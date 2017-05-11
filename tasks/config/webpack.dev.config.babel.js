@@ -7,6 +7,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin';
 
 import devConfig from './dev.config';
+import pathUtil from '../util/path-util';
 
 let webpackDevConfig = merge(webpackBaseConfig, {
   devtool: 'source-map',
@@ -23,9 +24,20 @@ let webpackDevConfig = merge(webpackBaseConfig, {
         NODE_ENV: '"development"'
       }
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: function (module) {
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&
+          module.resource.indexOf(
+            pathUtil.root('node_modules')
+          ) === 0
+        );
+      }
+    }),
     new ExtractTextPlugin({
-      filename: '[name].bundle.css',
-      disable: true
+      filename: '[name].bundle.css'
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -47,10 +59,7 @@ let webpackDevConfig = merge(webpackBaseConfig, {
       chunks: true,
       chunkModules: false
     },
-    hot: true,
-    filename: '[name].bundle.js',
-    publicPath: devConfig.output.publicPath,
-    clientLogLevel: 'info'
+    publicPath: devConfig.output.publicPath
   }
 });
 

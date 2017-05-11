@@ -2,7 +2,7 @@
 
 import merge from 'webpack-merge';
 import baseConfig from './base.config';
-import * as pathUtil from '../util/path-util';
+import pathUtil from '../util/path-util';
 
 
 /**
@@ -11,12 +11,12 @@ import * as pathUtil from '../util/path-util';
 
 const PROTOCOL = 'http://';
 const HOST = '127.0.0.1';
-const PORT = 5000;
+const PORT = 5001;
 
 
 let devConfig = merge(baseConfig, {
   output: {
-    path: pathUtil.root('build'),
+    path: pathUtil.root(baseConfig.dir.build),
     publicPath: PROTOCOL + HOST + ':' + PORT
   },
   devServer: {

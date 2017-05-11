@@ -1,10 +1,9 @@
 /* Created by Aquariuslt on 14/04/2017.*/
 
-import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-import * as pathUtil from '../util/path-util';
+import pathUtil from '../util/path-util';
 
 import baseConfig from './base.config';
 
@@ -22,7 +21,11 @@ let webpackBaseConfig = {
     rules: [
       {
         test: /\.js$/,
-        include: [pathUtil.root('src')],
+        include: [
+          pathUtil.root(baseConfig.dir.src),
+          pathUtil.root(baseConfig.dir.test.unit),
+          pathUtil.root(baseConfig.dir.test.e2e)
+        ],
         loader: 'babel-loader'
       },
       {
@@ -55,21 +58,9 @@ let webpackBaseConfig = {
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: function (module) {
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-            pathUtil.root('node_modules')
-          ) === 0
-        );
-      }
-    }),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-      favicon: './src/' + baseConfig.favicon
+      template: `./${baseConfig.dir.src}/index.html`,
+      favicon: `./${baseConfig.dir.src}/${baseConfig.file.favicon}`
     })
   ]
 };

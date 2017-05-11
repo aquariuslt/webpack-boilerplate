@@ -6,7 +6,6 @@ import sequence from 'gulp-sequence';
 import webpack from 'webpack';
 import webpackProdConfig from './config/webpack.prod.config.babel';
 
-import './clean';
 
 import logger from './util/logger';
 
