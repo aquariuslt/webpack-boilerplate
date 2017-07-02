@@ -16,7 +16,7 @@
       "error",
       "always",
       {
-        "omitLastInOneLineBlock": true
+        "omitLastInOneLineBlock": false
       }
     ],
     "comma-dangle": [

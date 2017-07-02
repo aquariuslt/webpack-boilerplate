@@ -7,16 +7,14 @@ import webpack from 'webpack';
 import webpackProdConfig from './config/webpack.prod.config.babel';
 
 
-import logger from './util/logger';
-
 gulp.task('build', function (done) {
-  logger.info('Webpack building.');
+  gutil.log('Webpack building.');
   webpack(webpackProdConfig, function (error, stats) {
     if (error) {
       throw new gutil.PluginError('webpack', error);
     }
     gutil.log(stats.toString(webpackProdConfig.stats));
-    logger.info('Webpack build done');
+    gutil.log('Webpack build done');
     done();
   });
 });

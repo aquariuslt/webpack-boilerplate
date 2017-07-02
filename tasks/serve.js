@@ -8,7 +8,6 @@ import addDevServerEntrypoints from 'webpack-dev-server/lib/util/addDevServerEnt
 
 import webpackDevConfig from './config/webpack.dev.config.babel';
 
-import logger from './util/logger';
 
 gulp.task('serve', function () {
   logger.info('Webpack building.');
