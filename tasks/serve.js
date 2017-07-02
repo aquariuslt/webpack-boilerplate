@@ -10,7 +10,7 @@ import webpackDevConfig from './config/webpack.dev.config.babel';
 
 
 gulp.task('serve', function () {
-  logger.info('Webpack building.');
+  gutil.log('Webpack building.');
   addDevServerEntrypoints(webpackDevConfig, webpackDevConfig.devServer);
   let compilerConfig = webpack(webpackDevConfig);
   new WebpackDevServer(compilerConfig, webpackDevConfig.devServer)
