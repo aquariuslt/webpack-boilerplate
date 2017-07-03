@@ -7,7 +7,7 @@ import webpack from 'webpack';
 import webpackProdConfig from './config/webpack.prod.config.babel';
 
 
-gulp.task('build', function (done) {
+gulp.task('webpack', function (done) {
   gutil.log('Webpack building.');
   webpack(webpackProdConfig, function (error, stats) {
     if (error) {
@@ -20,6 +20,6 @@ gulp.task('build', function (done) {
 });
 
 
-gulp.task('build:prod', sequence(['clean'], ['build']));
+gulp.task('build', sequence(['clean'], ['webpack']));
 
 
